@@ -6,13 +6,25 @@ import Box from "./Box";
 
 /** A component that contains the state for boxes
  *  and renders Box Components and NewBoxForm component
+ * 
+ * props:
+ * - None
+ * 
+ * state: 
+ * - boxes list (initially an empty array of boxes)
+ * 
+ * events:
+ * -none
+ * 
+ * App -> BoxList -> Box and NewBoxForm
+ * 
  */
 function BoxList() {
     const [boxes, setBoxes] = useState([]);
 
     function addBox(box) {
-        let newBox = {...box, id: uuid()};
-        setBoxes(() => ([...boxes, newBox]));
+        let newBox = { ...box, id: uuid() };
+        setBoxes(currBoxes => ([...currBoxes, newBox]));
     }
 
     function removeBox(id) {
@@ -26,7 +38,7 @@ function BoxList() {
             <div><NewBoxForm addBox={addBox} /></div>
             <div>
                 {boxes.map(b => (
-                    <Box 
+                    <Box
                         key={b.id}
                         id={b.id}
                         width={b.width}
