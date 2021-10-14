@@ -19,13 +19,14 @@ import React, { useState } from "react";
  */
 
 function NewBoxForm({ addBox }) {
-    const INITIAL_DATA = {
+    const INITIAL_DATA = { // all caps only for global constants; can move out to be global
         width: "",
         height: "",
         backgroundColor: ""
-    }
+    };
 
-    const [newBox, setNewBox] = useState(INITIAL_DATA)
+    // formData would be better name; more generic
+    const [newBox, setNewBox] = useState(INITIAL_DATA);
 
     function handleSubmit(evt) {
         evt.preventDefault();
